@@ -1,5 +1,12 @@
 /// <reference types="Cypress"/>
-Cypress.Commands.add('functional_search_by_home', (item, itemAmountReturnMessage, productIsVisible) => {
+Cypress.Commands.add('functional_search_by_home', (item) => {
+    cy.visit('https://magento.softwaretestingboard.com/')
+        cy.get('#search').type(item).type('{enter}')
+        cy.get(':nth-child(1) > .product-item-info > .details > .name > .product-item-link').should('contain', item)
+})
+
+
+Cypress.Commands.add('functional_search_and_check_by_home', (item, itemAmountReturnMessage, productIsVisible) => {
     cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('#search').type(item).type('{enter}')
         if(productIsVisible == true) {

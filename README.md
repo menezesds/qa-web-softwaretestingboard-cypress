@@ -6,6 +6,8 @@ runme:
 
 # cy-web-test
 
+[![main](https://github.com/menezesds/qa-web-softwaretestingboard-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/menezesds/qa-web-softwaretestingboard-cypress/actions)
+
 Project to test the https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html web page, using Cypress as a web test framework.
 
 ## Pre-requirements
@@ -16,8 +18,12 @@ It is required to have Node.js and npm installed to run this project.
 
 ## Installation
 
-Run `npm install` (or `npm i` for the short version) to install the dev dependencies.
+Run to installthe developments dependencies.
 
-___
+```sh {"id":"01HQNF63C26VHBCQ4DDZ1JFE2X"}
+npm install
+```
+
+---
 
 This project was created with 💚 by [Diogo Menezes](https://github.com/menezesds).

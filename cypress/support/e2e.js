@@ -18,6 +18,8 @@ import './commands'
 import './commands_login'
 import './commands_signin'
 import './commands_search'
+import './commands_itemDetail'
+import './commands_cartPlugin'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
