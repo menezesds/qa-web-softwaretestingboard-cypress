@@ -15,4 +15,4 @@ jobs:
           with: 
             node-version: ${{ matrix.node-version }}
         - run: npm ci
-        - run: cypress run
+        - run: npm run test
