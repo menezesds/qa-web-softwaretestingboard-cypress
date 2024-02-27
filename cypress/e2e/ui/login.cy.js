@@ -16,7 +16,7 @@ describe('UI Functional Test: Login', () => {
     });
     it('Should return failure when logging in with empty password', () => {
         cy.functional_login('test0001@cenglandb.com', '')
-        cy.get('.message-error > div').should('contain', 'Invalid Form Key. Please refresh the page.')
+        cy.get('.message-error > div').should('contain', 'A login and a password are required.')
     });
 
     it('Should return failure when logging in with empty username', () => {
