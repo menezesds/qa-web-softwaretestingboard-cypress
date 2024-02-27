@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:mobile": "cypress open --config viewportWidth=370 viewportHeight=660"
   },
   "keywords": [],
   "author": "Diogo Souza Menezes",

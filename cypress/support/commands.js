@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('waitUntil', (element, numberOfTry) => { 
+    for (let index = 0; index < numberOfTry; index++) {
+        if(cy.get(element).should('exist')){
+            break;
+        }
+        index++
+    }
+ })

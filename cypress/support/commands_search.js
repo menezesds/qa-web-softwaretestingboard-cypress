@@ -2,7 +2,6 @@
 Cypress.Commands.add('functional_search_by_home', (item, itemAmountReturnMessage, productIsVisible) => {
     cy.visit('https://magento.softwaretestingboard.com/')
         cy.get('#search').type(item).type('{enter}')
-        
         if(productIsVisible == true) {
             cy.get('#toolbar-amount').should('contain', itemAmountReturnMessage)
             cy.get('.product-items').should('be.visible')
