@@ -2,7 +2,7 @@
 describe('UI Functional Test: Login', () => {
     it('Should redirect to home page after successul login with correct username and password', () => {
         cy.functional_login('test0001@cenglandb.com', '*t4K#^g*TT929Yq')
-        cy.waitUntil(':nth-child(2) > .greet > .logged-in', 5)
+        cy.waitUntilExist(':nth-child(2) > .greet > .logged-in', 5)
         cy.get(':nth-child(2) > .greet > .logged-in').should('contain', 'Welcome, Test0001 Test!')
     })
     it('Should return failure when logging in with invalid username and an valid password', () => {

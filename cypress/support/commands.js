@@ -24,9 +24,27 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('waitUntil', (element, numberOfTry) => { 
+Cypress.Commands.add('waitUntilExist', (element, numberOfTry) => { 
     for (let index = 0; index < numberOfTry; index++) {
         if(cy.get(element).should('exist')){
+            break;
+        }
+        index++
+    }
+ })
+
+ Cypress.Commands.add('waitUntilValueIsDisplayed', (element, value, numberOfTry) => { 
+    for (let index = 0; index < numberOfTry; index++) {
+        if(cy.get(element).should('contain', value)){
+            break;
+        }
+        index++
+    }
+ })
+
+ Cypress.Commands.add('waitUntilNotExist', (element, numberOfTry) => { 
+    for (let index = 0; index < numberOfTry; index++) {
+        if(!cy.get(element).should('exist')){
             break;
         }
         index++

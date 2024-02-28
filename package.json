@@ -12,6 +12,7 @@
   "author": "Diogo Souza Menezes",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^5.1.0",
     "cypress": "^13.6.6"
   }
 }
