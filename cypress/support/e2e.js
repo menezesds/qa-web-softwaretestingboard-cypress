@@ -16,7 +16,6 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import './commands_login'
-import './commands_signin'
 import './commands_search'
 import './commands_itemDetail'
 import './commands_cartPlugin'

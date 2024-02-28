@@ -1,4 +1,9 @@
 /// <reference types="Cypress"/>
+Cypress.Commands.add('enter_create_account', () => {
+    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.get('.panel > .header > .authorization-link > a').contains('Sign In').click()
+})
+
 Cypress.Commands.add('functional_login', (username, password) => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.get('.panel > .header > .authorization-link > a').contains('Sign In').click()

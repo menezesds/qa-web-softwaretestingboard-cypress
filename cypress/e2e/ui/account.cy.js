@@ -1,0 +1,25 @@
+/// <reference types="Cypress"/>
+describe('UI Functional Test: Account', () => {
+    it('should display message when try create account with no informations', () => {
+        cy.enter_create_account()
+        cy.get('.login-container > .block-new-customer > .block-content > .actions-toolbar > div.primary > .action').click()
+        cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+        cy.get('#firstname-error').should('be.visible')
+        cy.get('#lastname-error').should('be.visible')
+        cy.get('#email_address-error').should('be.visible')
+        cy.get('#password-error').should('be.visible')
+        cy.get('#password-confirmation-error').should('be.visible')
+        cy.get('#form-validate > .account').should('be.visible')
+    })
+    it.only('should display message when try create account with First Name informations', () => {
+        cy.enter_create_account()
+        cy.get('.login-container > .block-new-customer > .block-content > .actions-toolbar > div.primary > .action').click()
+        cy.get('#lastname').type('Test')
+        cy.get('#email_address').type('test0001@test.com')
+        cy.get('#password').type('*t4K#^g*TT929Yq')
+        cy.get('#password-confirmation').type('*t4K#^g*TT929Yq')
+        cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+        cy.get('#firstname-error').should('be.visible')
+        cy.get('#form-validate > .account').should('be.visible')
+    })
+})
