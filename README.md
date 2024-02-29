@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HQNC6VGHMCKYW0P424N1BPEE
-  version: v3
----
-
 # cy-web-test
 
 [![main](https://github.com/menezesds/qa-web-softwaretestingboard-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/menezesds/qa-web-softwaretestingboard-cypress/actions)
