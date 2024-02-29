@@ -24,21 +24,19 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('waitUntilExist', (element, numberOfTry) => { 
-    for (let index = 0; index < numberOfTry; index++) {
-        if(cy.get(element).should('exist')){
-            break;
-        }
-        index++
+Cypress.Commands.add('waitUntilExist', (element, numberOfTry, waitTime = 0) => { 
+    let tries = 0;
+    while (tries <= numberOfTry || !cy.get(element).should('exist')) {
+        cy.wait(waitTime)
+        tries++
     }
  })
 
- Cypress.Commands.add('waitUntilValueIsDisplayed', (element, value, numberOfTry) => { 
-    for (let index = 0; index < numberOfTry; index++) {
-        if(cy.get(element).should('contain', value)){
-            break;
-        }
-        index++
+ Cypress.Commands.add('waitUntilValueIsDisplayed', (element, value, numberOfTry, waitTime = 0) => { 
+    let tries = 0;
+    while (tries <= numberOfTry || !cy.get(element).should('contain', value)) {
+        cy.wait(waitTime)
+        tries++
     }
  })
 
@@ -50,3 +48,15 @@ Cypress.Commands.add('waitUntilExist', (element, numberOfTry) => {
         index++
     }
  })
+
+ Cypress.Commands.add('validateEllementIsVisible', (elements) => {
+    elements.forEach(element => {
+        cy.get(element).should('be.visible')
+    });
+})
+
+Cypress.Commands.add('fillForm', (object) => {
+    Object.entries(object).forEach(([key, value]) => {
+        cy.get(key).type(value);
+      });
+})

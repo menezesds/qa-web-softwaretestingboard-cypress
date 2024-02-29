@@ -1,30 +1,36 @@
 /// <reference types="Cypress"/>
+import cypressjson from '../../../cypres.json'
+import loginSelectors from "../../selectors/loginSelectors";
+
 describe('UI Functional Test: Login', () => {
+    beforeEach(() => {
+        cy.visit('')
+    })
     it('Should redirect to home page after successul login with correct username and password', () => {
-        cy.functional_login('test0001@cenglandb.com', '*t4K#^g*TT929Yq')
-        cy.waitUntilExist(':nth-child(2) > .greet > .logged-in', 5)
-        cy.get(':nth-child(2) > .greet > .logged-in').should('contain', 'Welcome, Test0001 Test!')
+        cy.functionalLogin(cypressjson.email, cypressjson.password)
+        cy.waitUntilExist(loginSelectors.welcomeMessageWithUserName, 5)
+        cy.get(loginSelectors.welcomeMessageWithUserName).should('contain', loginSelectors.welcomeMessage)
     })
     it('Should return failure when logging in with invalid username and an valid password', () => {
-        cy.functional_login('test0002@cenglandb.com', '*t4K#^g*TT929Yq')
-        cy.get('.message-error > div').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+        cy.functionalLogin(loginSelectors.invalidUserName, cypressjson.password)
+        cy.get(loginSelectors.loginErro).should('contain', loginSelectors.loginErroMessage)
     })
     it('Should return failure when logging in with invalid username and password', () => {
-        cy.functional_login('invalid_user@test.com', 'invalid_password')
-        cy.get('.message-error > div').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+        cy.functionalLogin(loginSelectors.invalidUserName, loginSelectors.invalidPassword)
+        cy.get(loginSelectors.loginErro).should('contain', loginSelectors.loginErroMessage)
         
     });
     it('Should return failure when logging in with invalid password', () => {
-        cy.functional_login('test0001@cenglandb.com', 'invalid_password')
-        cy.get('.message-error > div').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+        cy.functionalLogin(cypressjson.email, loginSelectors.invalidPassword)
+        cy.get(loginSelectors.loginErro).should('contain', loginSelectors.loginErroMessage)
     });
     it('Should return failure when logging in with empty password', () => {
-        cy.functional_login('test0001@cenglandb.com', '')
-        cy.get('.message-error > div').should('contain', 'A login and a password are required.')
+        cy.functionalLogin(cypressjson.email, '')
+        cy.get(loginSelectors.loginErro).should('contain', loginSelectors.loginRequiredFieldErroMessage)
     });
 
     it('Should return failure when logging in with empty username', () => {
-        cy.functional_login('', '*t4K#^g*TT929Yq')
-        cy.get('.message-error > div').should('contain', 'A login and a password are required.')
+        cy.functionalLogin('', cypressjson.password)
+        cy.get(loginSelectors.loginErro).should('contain', loginSelectors.loginRequiredFieldErroMessage)
     });
 });

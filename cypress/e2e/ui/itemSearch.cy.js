@@ -1,15 +1,20 @@
 /// <reference types="Cypress"/>
+import itemSelectors from '../../selectors/itemSelectors'
+
 describe('UI Functional Test: Item search', () => {
+    beforeEach(() => {
+        cy.visit('')
+    })
     it('Should return an item when search for an exist product by home', () => {
-        cy.functional_search_and_check_by_home('Yoga', 'Items 1-12 of 30', true)
+        cy.functionalSearchAndCheckByHome('Yoga', 'Items 1-12 of 30', true)
     })
 
     it('Should not return an item when search for an nonexistent product by home', () => {
-        cy.functional_search_and_check_by_home('iphone', 'Your search returned no results.', false)
+        cy.functionalSearchAndCheckByHome('iphone', itemSelectors.noResultMessage , false)
     })
 
     it('Should return an item when search for an exist product by Women category ', () => {
-        cy.functional_search_by_category('Jacket', '12 Items')
+        cy.functionalSearchByCategory('Jacket', '12 Items')
     })
     
 })
