@@ -10,7 +10,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
     },
     chromeWebSecurity: false,
-    video: false,
+    video: true,
     baseUrl: 'https://magento.softwaretestingboard.com/'
   },
+  projectId: "x8oogh"
 });
